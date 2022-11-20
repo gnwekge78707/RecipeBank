@@ -9,6 +9,8 @@
     </entity>
     <entity name="Recipe" representedClassName=".Recipe" syncable="YES">
         <attribute name="amounts" optional="YES" attributeType="Transformable"/>
+        <attribute name="comments" optional="YES" attributeType="Transformable"/>
+        <attribute name="describe" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="image" optional="YES" attributeType="Binary"/>
         <attribute name="ingredients" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
@@ -16,7 +18,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Recipe" positionX="-63" positionY="-18" width="128" height="119"/>
         <element name="MetaRecipe" positionX="-63" positionY="27" width="128" height="104"/>
+        <element name="Recipe" positionX="-63" positionY="-18" width="128" height="149"/>
     </elements>
 </model>

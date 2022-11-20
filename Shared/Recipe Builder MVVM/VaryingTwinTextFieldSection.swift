@@ -2,7 +2,7 @@
 //  VaryingTwinTextFieldSection.swift
 //  Recipe-Builder
 //
-//  Created by jiarui on 2022/11/14.
+//  Created by youKnowWhoIAm on 2022/11/14.
 //
 
 import SwiftUI
@@ -108,7 +108,7 @@ struct VaryingTwinTextFieldSection: View {
     }
     
     var plus: some View {
-        Button("+") {
+        Button("+ Ingredient") {
             if !list.wrappedValue.contains("") {
                 list.wrappedValue.append("")
                 list1.wrappedValue.append("")
@@ -119,7 +119,7 @@ struct VaryingTwinTextFieldSection: View {
     }
     
     var plusGroup: some View {
-        Button("+") {
+        Button("+ Group") {
             if !list.wrappedValue.contains("") {
                 list.wrappedValue.append("")
                 list1.wrappedValue.append("")

@@ -2,7 +2,7 @@
 //  ImageSelector.swift
 //  Recipe-Builder
 //
-//  Created by Jiarui.
+//  Created by youKnowWhoIAm.
 //
 
 import SwiftUI

@@ -52,7 +52,7 @@ class RecipeStoreController {
         }*/
     }
     
-    func add(name: String, ingredients: [String], amounts: [String], instructions: [String], image: Data?) {
+    func add(name: String, ingredients: [String], amounts: [String], instructions: [String], image: Data?, describe: String, comments: [String]) {
         let ctx = self.container.viewContext
         let recipe = Recipe(context: ctx)
         
@@ -62,6 +62,8 @@ class RecipeStoreController {
         recipe.amounts = amounts
         recipe.instructions = instructions
         recipe.image = image
+        recipe.describe = describe
+        recipe.comments = comments
         
         ctx.insert(recipe)
         if ctx.hasChanges {
@@ -73,9 +75,9 @@ class RecipeStoreController {
         }
     }
     
-    func edit(id: UUID, name: String, ingredients: [String], amounts: [String], instructions: [String], image: Data?) {
+    func edit(id: UUID, name: String, ingredients: [String], amounts: [String], instructions: [String], image: Data?, describe: String, comments: [String]) {
         guard let recipe = get(with: id) else {
-            add(name: name, ingredients: ingredients, amounts: amounts, instructions: instructions, image: image)
+            add(name: name, ingredients: ingredients, amounts: amounts, instructions: instructions, image: image, describe: describe, comments: comments)
             return
         }
         print("Recipe with id \(id) loaded")
@@ -85,6 +87,8 @@ class RecipeStoreController {
         recipe.amounts = amounts
         recipe.instructions = instructions
         recipe.image = image
+        recipe.describe = describe
+        recipe.comments = comments
         
         if container.viewContext.hasChanges {
             do {

@@ -2,7 +2,7 @@
 //  RecipeDetailView.swift
 //  Recipe-Builder
 //
-//  Created by Jake Davies on 08/07/2021.
+//  Created by youKnowWhoIAm on 08/10/2022.
 //
 
 import SwiftUI
@@ -63,6 +63,8 @@ struct RecipeDetailView: View {
                     ingredientSubView
                     
                     instructionSubView
+                    
+                    commentSubView
              
                 }
                 .padding(.top, 25)
@@ -212,7 +214,7 @@ struct RecipeDetailView: View {
                 Spacer()
             }
             
-            Text("一款表皮酥脆，麦香十足，软质奶酪内陷的欧式面包")
+            Text(recipe.describe ?? "一款表皮酥脆，麦香十足，软质奶酪内陷的欧式面包")
                 .padding(.top, 5)
                 .fixedSize(horizontal: false, vertical: true)
         }
@@ -233,6 +235,41 @@ struct RecipeDetailView: View {
             }
                 
             ForEach(recipe.instructions ?? [], id: \.self) { item in
+                HStack(alignment: .center, spacing: 5) {
+                    Image(systemName: "chevron.right")
+                        .resizable()
+                        .frame(width: 15, height: 25, alignment: .center)
+                        .imageScale(.large)
+                        .font(Font.title.weight(.ultraLight))
+                        .foregroundColor(Color.gray)
+                    
+                    Text(item)
+                        .lineLimit(nil)
+                        .multilineTextAlignment(.leading)
+                        .font(.system(.body, design: .default))
+                        .fixedSize(horizontal: false, vertical: true)
+
+                }
+                .padding(.vertical, 10)
+            }
+        }
+        .modifier(BoxBackgroundModifier())
+        .padding(.top, 15)
+    }
+    
+    private var commentSubView: some View {
+        
+        VStack(alignment: .leading, spacing: 10) {
+        
+            HStack {
+                Spacer()
+                Text("Comments")
+                    .font(.system(size: 25, weight: .bold))
+                    .modifier(BoxTitleModifier())
+                Spacer()
+            }
+                
+            ForEach(recipe.comments ?? [], id: \.self) { item in
                 HStack(alignment: .center, spacing: 5) {
                     Image(systemName: "chevron.right")
                         .resizable()

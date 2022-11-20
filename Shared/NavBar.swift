@@ -2,7 +2,7 @@
 //  NavBar.swift
 //  Recipe-Builder
 //
-//  Created by jiarui on 2022/11/16.
+//  Created by youKnowWhoIAm on 2022/11/16.
 //
 
 import SwiftUI
@@ -25,12 +25,12 @@ struct NavBar: View {
             RecipeBookView().tabItem {
                 VStack {
                     Image(systemName: "bookmark")
-                    Text("MetaRecipe")
+                    Text("RecipeBank")
                 }
                 
             }.tag(2)
             
-            Text("Profile").tabItem {
+            Text("MetaRecipe").tabItem {
                 VStack {
                     Image(systemName: "gear")
                     Text("Profile")

@@ -2,7 +2,7 @@
 //  NewRecipeForm.swift
 //  Recipe-Builder
 //
-//  Created by Jake Davies on 24/06/2021.
+//  Created by youKnowWhoIAm on 24/10/2022.
 //
 
 import SwiftUI
@@ -22,6 +22,7 @@ struct RecipeBuilderForm: View {
     var body: some View {
         Form {
             recipeTitleSection
+            recipeDescribeSection
             switchButton
             loadMetaRecipe
             ingredientsSection
@@ -127,6 +128,10 @@ struct RecipeBuilderForm: View {
         TextField("Recipe Name", text: $builder.name)
     }
     
+    var recipeDescribeSection: some View {
+        TextField("Recipe Description", text: $builder.describe)
+    }
+    
     var ingredientsSection: some View {
         VaryingTwinTextFieldSection(title: "Ingredients:",
                                 placeholder: "New Ingredient", placeholder1: "New Amount",
@@ -144,7 +149,7 @@ struct RecipeBuilderForm: View {
     var commentSection: some View {
         VaryingTextFieldSection(title: "Comments:",
                                 placeholder: "New Comment",
-                                list: $builder.instructions)
+                                list: $builder.comments)
     }
     
     var imageSection: some View {

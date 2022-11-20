@@ -2,7 +2,7 @@
 //  RecipeBuilder.swift
 //  Recipe-Builder
 //
-//  Created by Jake Davies on 09/07/2021.
+//  Created by youKnowWhoIAm on 09/10/2022.
 //
 
 import SwiftUI
@@ -15,6 +15,8 @@ class RecipeBuilder: ObservableObject {
     @Published var ingredients: [String] = [""]
     @Published var amounts: [String] = [""]
     @Published var instructions: [String] = [""]
+    @Published var comments: [String] = [""]
+    @Published var describe: String = ""
     @Published var image: Data? = nil
     private var controller = RecipeStoreController.instance
     private var recipe: Recipe?
@@ -33,11 +35,11 @@ class RecipeBuilder: ObservableObject {
         // if a recipe not loaded
         if recipe == nil {
             self.controller.add(name: self.name, ingredients: self.ingredients, amounts: self.amounts,
-                                instructions: self.instructions, image: self.image)
+                                instructions: self.instructions, image: self.image, describe: self.describe, comments: self.comments)
             
         } else {
             // id here is nil
-            self.controller.edit(id: recipe!.id!, name: self.name, ingredients: self.ingredients, amounts: self.amounts, instructions: self.instructions, image: self.image)
+            self.controller.edit(id: recipe!.id!, name: self.name, ingredients: self.ingredients, amounts: self.amounts, instructions: self.instructions, image: self.image, describe: self.describe, comments: self.comments)
         }
         book.refresh()
     }
@@ -49,6 +51,8 @@ class RecipeBuilder: ObservableObject {
             self.ingredients = recipe!.ingredients!
             self.amounts = recipe!.amounts!
             self.instructions = recipe!.instructions!
+            self.comments = recipe!.comments!
+            self.describe = recipe!.describe!
         } else { return }
     }
     

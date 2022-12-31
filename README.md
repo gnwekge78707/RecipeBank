@@ -1,6 +1,70 @@
 # RecipeBank: 面向烹饪爱好者的食谱记录平台
 
-详细文档见[detailed docs](https://github.com/gnwekge78707/RecipeBank/tree/master/recipeBank-docs)
+**Project Document**: [detailed docs](https://github.com/gnwekge78707/RecipeBank/tree/master/recipeBank-docs)
+
+| ![Simulator Screen Shot - iPhone 11 - 2022-11-18 at 18.18.37](README.assets/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202022-11-18%20at%2018.18.37.png) | ![Simulator Screen Shot - iPhone 11 - 2022-11-18 at 18.19.05](README.assets/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202022-11-18%20at%2018.19.05.png) | ![Simulator Screen Shot - iPhone 11 - 2022-11-18 at 18.19.48](README.assets/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202022-11-18%20at%2018.19.48.png) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![Simulator Screen Shot - iPhone 11 - 2022-11-18 at 18.20.19](README.assets/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202022-11-18%20at%2018.20.19.png) | ![Simulator Screen Shot - iPhone 11 - 2022-11-18 at 18.20.51](README.assets/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202022-11-18%20at%2018.20.51.png) | ![Simulator Screen Shot - iPhone 11 - 2022-11-18 at 18.21.35](README.assets/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202022-11-18%20at%2018.21.35.png) |
+| ![Simulator Screen Shot - iPhone 11 - 2022-11-18 at 18.21.56](README.assets/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202022-11-18%20at%2018.21.56.png) | ![Simulator Screen Shot - iPhone 11 - 2022-11-18 at 18.23.11](README.assets/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202022-11-18%20at%2018.23.11.png) | ![Simulator Screen Shot - iPhone 11 - 2022-11-20 at 10.10.29](README.assets/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202022-11-20%20at%2010.10.29.png) |
+
+
+
+## Architecture
+
+```mermaid
+flowchart TD
+subgraph Views
+
+subgraph RecipeBookView
+bb(RecipeBuilderFormView)
+bb1(VaryingTextFieldSection)
+bb2(...)
+end
+
+subgraph RecipeBuilderView
+aa(RecipeBookView)
+a2(RecipeDetailView)
+a3(...)
+end
+
+end
+
+subgraph ViewModels
+RecipeStoreController(RecipeStoreController-singleton)
+
+subgraph RecipeBookVM
+c1(RecipeBook)
+end
+
+subgraph RecipeBuilderVM
+d1(RecipeBuilder)
+end
+
+
+end
+
+subgraph Model
+Recipe(Recipe)
+end
+d1--持有-->c1
+c1--持有-->RecipeStoreController
+d1--持有-->RecipeStoreController
+RecipeStoreController--持有-->Recipe
+
+RecipeBookView--持有-->RecipeBookVM
+RecipeBuilderView--持有-->RecipeBuilderVM
+```
+
+
+
+
+
+## Technologies
+
+- Swift 5
+- SwiftUI 2
+- Core Data for recipe storage
+- UIKit View Controllers for implementing Camera and Photo Library support
 
 ## 思路来源和基本需求
 
@@ -31,9 +95,3 @@
 - 优点：应用场景真实，笔者本人就希望能够使用这样一款App；实现可行——不像其他需要服务端的平台，现阶段不需要考虑服务端的开发，作为个人项目更为现实，且有更多时间能够细化UI细节、提升用户体验。
 - 需要注意：要区分该应用与一般的记事本应用的区别。这可以通过强调食谱模板，食谱比例计算等功能实现。
 
-## Technologies
-
-- Swift 5
-- SwiftUI 2
-- Core Data for recipe storage
-- UIKit View Controllers for implementing Camera and Photo Library support
